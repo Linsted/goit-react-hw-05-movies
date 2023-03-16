@@ -72,3 +72,26 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/';
     return response;
 
 };
+
+export const fetchMovieByQuery = async (query) => {
+  
+    axios.defaults.baseURL = 'https://api.themoviedb.org/3/search/movie';
+    const KEY = `b2ef32b4f6ff426002ea648d4ef256a9`;
+
+
+  const response = await  axios.get(``, {
+        params: {
+          api_key: KEY,
+          language: "en-US",
+          query,
+          page: 1,
+          include_adult: true,
+          
+            
+        },
+    });  
+
+    
+    return response;
+    
+};
