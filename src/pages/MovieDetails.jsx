@@ -1,15 +1,45 @@
 import { useParams } from "react-router-dom";
+import { fetchMovieById } from "Api/Api";
+import { useEffect, useState } from "react";
+import MovieItem from "components/MovieItem/MovieItem";
+import { Link,Outlet } from "react-router-dom";
 
 
 const MovieDetails = () => { 
 
+    const [movie, setMovie] = useState([]);
     const { movieId } = useParams();
-    console.log(useParams());
-    console.log(movieId)
+
+    useEffect(() => {
+     const fetchMovie = async () => {
+        
+        try {
+            const response = await fetchMovieById(movieId);
+            setMovie(response.data);
+        } catch (error) {
+            console.log(error);
+         };
+
+    };
+
+        fetchMovie();
+
+    }, [movieId]);
+
+   
+    
+    
+    
 
     return (
-        <>
-            <p> Номер: {movieId} </p>
+        <>  
+            <MovieItem movie={movie} />
+            
+            <ul>
+                <li><Link to="cast">Cast</Link></li>
+                <li><Link to="reviews">Reviews</Link></li>
+            </ul>
+            <Outlet />
         </>
     )
 
