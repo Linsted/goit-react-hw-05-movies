@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { fetchMovieById } from "Api/Api";
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState, Suspense } from "react";
 import MovieItem from "components/MovieItem/MovieItem";
 import { Link,Outlet } from "react-router-dom";
 
