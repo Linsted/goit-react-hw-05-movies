@@ -19,7 +19,6 @@ const Movies = () => {
 
             try {
                 const response = await fetchMovieByQuery(query);
-                console.log(response.data);
                 setMovies(response.data.results)
             } catch (error) {
                 console.log(error)

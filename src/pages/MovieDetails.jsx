@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { fetchMovieById } from "Api/Api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import MovieItem from "components/MovieItem/MovieItem";
 import { Link,Outlet } from "react-router-dom";
 
 
 const MovieDetails = () => { 
 
-    const [movie, setMovie] = useState([]);
+    const [movie, setMovie] = useState({});
     const { movieId } = useParams();
 
     useEffect(() => {
@@ -39,9 +39,11 @@ const MovieDetails = () => {
                 <li><Link to="cast">Cast</Link></li>
                 <li><Link to="reviews">Reviews</Link></li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<div>Loading subpage...</div>}>
+                <Outlet />
+            </Suspense>
         </>
-    )
+    );
 
 };
 export default MovieDetails;

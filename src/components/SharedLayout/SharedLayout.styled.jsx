@@ -8,6 +8,7 @@ display: flex;
     gap: 30px;
     color: black;
     box-shadow: 0px 7px 5px 0px rgba(0,0,0,0.55);
+    margin-bottom: 30px;
 
    
 `;
